@@ -5,10 +5,8 @@ import random as rdm
 import matplotlib.pyplot as plt
 import os
 
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
-
 dir, file = os.path.split(__file__)
+save = False
 
 
 '''values'''
@@ -25,7 +23,6 @@ Therm = 5 * N_cor   # number of sweeps through path set
 
 w = 1     # harmonic constant
 L = 3     # well length
-save = True
 
 
 '''determinants/shorthands'''
@@ -276,6 +273,9 @@ elif pot == pot3:
 
 """Plotting"""
 
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
+
 ts = t[:-1]
 plt.figure(figsize=(8, 4))
 if pot == pot1 or pot == pot2:
@@ -290,8 +290,6 @@ plt.legend()
 plt.title('1D-Delta_E_' + name, y=1.075)
 plt.tick_params(labelbottom=True, labeltop=False, labelleft=True, labelright=False, direction='in')
 plt.tick_params(bottom=True, top=False, left=True, right=False)
-
-
 if save == True:
     plt.savefig(dir + '\\Images\\DeltaE_1D-' + name + '.png')
 plt.show()

@@ -6,10 +6,8 @@ import matplotlib.pyplot as plt
 import os
 from matplotlib import cm
 
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
-
 dir, file = os.path.split(__file__)
+save = False
 
 '''values'''
 mass = 1   # setting mass to be 1
@@ -24,8 +22,6 @@ bins = 75      # number of bins for histogram
 N_cor = 20         # number of paths to be skipped path set (due to correlation)
 Therm = 5 * N_cor  # number of sweeps through path set
 N_CF = 10 ** 5     # number of updates
-
-save = True
 
 '''determinants/shorthands'''
 t_points = np.arange(t_i, t_f + step, step)  # number of temporal points
@@ -217,6 +213,10 @@ for i in range(len(xs)):
     res_y[i] = np.mean(res[:, i])
 
 "Plotting 3D Histogram"
+
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
+
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
 x, y = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
@@ -257,7 +257,7 @@ ax.set_zlabel('|' + chr(968) + '|' + chr(178))
 #ax.zaxis.set_major_formatter('{x:.02f}')
 ax.tick_params(axis='z', labelcolor='red')
 if save == True:
-    fig.savefig(dir + '\\Images\\3Dhist_' + name + '-' + str(t_f) + 's_new.png')
+    fig.savefig(dir + '\\Images\\3Dhist-' + name + '-' + str(t_f) + 's' + str(2) +'.png')
 plt.show()
 
 
@@ -271,7 +271,7 @@ ax.pcolormesh(x, y, Norm.T)
 ax.set_xlim([-2, 2])
 ax.set_ylim([-2, 2])
 if save == True:
-    fig.savefig(dir + '\\Images\\contour-hist_' + name + '-' + str(t_f) + 's_new.png')
+    fig.savefig(dir + '\\Images\\contour_hist-' + name + '-' + str(t_f) + 's_new.png')
 plt.show()
 
 # Residual contour
@@ -281,6 +281,6 @@ ax.pcolormesh(xs, ys, res)
 ax.set_xlim([-2, 2])
 ax.set_ylim([-2, 2])
 if save == True:
-    fig.savefig(dir + '\\Images\\contour-res_' + name + '-' + str(t_f) + 's_new.png')
+    fig.savefig(dir + '\\Images\\contour_res-' + name + '-' + str(t_f) + 's_new.png')
 plt.show()
 

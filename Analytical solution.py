@@ -4,7 +4,9 @@ import numpy as np
 import random as rdm
 import matplotlib.pyplot as plt
 import os
+
 dir, file = os.path.split(__file__)
+save = False
 
 
 '''values'''
@@ -205,6 +207,7 @@ ax2.tick_params(axis='y', labelcolor='red')
 ax2.set_ylabel('Potential', color='black')
 plt.legend(loc='upper left')
 fig.tight_layout()
-fig.savefig(dir + '\\Images\\calc_analytical_solution_6.png')
+if save == True:
+    fig.savefig(dir + '\\Images\\calc_analytical_solution_6.png')
 plt.show()
 

@@ -5,10 +5,8 @@ import random as rdm
 import matplotlib.pyplot as plt
 import os
 
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
-
 dir, file = os.path.split(__file__)
+save = False
 
 '''values'''
 mass = 1   # setting mass to be 1
@@ -27,8 +25,6 @@ l = 1
 
 w = 1   # harmonic constant
 L = 6   # well length
-
-save = True
 
 '''determinants/shorthands'''
 t_points = np.arange(t_i, t_f + step, step)  # number of temporal points
@@ -265,6 +261,9 @@ print('done boot')
 
 
 """Plotting"""
+
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
 
 if compute_G == compute_G1:
     name = 'x'

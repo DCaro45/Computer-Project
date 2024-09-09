@@ -6,6 +6,9 @@ import math as mt
 import random as rdm
 import os
 
+dir, file = os.path.split(__file__)
+save = False
+
 
 '''values'''
 mass = 1  # setting mass to be 1
@@ -220,6 +223,6 @@ plt.xlim(x0, x1)
 plt.xlabel('position')
 plt.ylim(-0.2, max(y1) + 0.1*max(y1))
 
-dir, file = os.path.split(__file__)
-#plt.savefig(dir + '\\Images\\hist-Brute_force.png')
+if save == True:
+    plt.savefig(dir + '\\Images\\hist-Brute_force.png')
 plt.show()

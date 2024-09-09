@@ -5,10 +5,8 @@ import matplotlib.pyplot as plt
 import random as rdm
 import os
 
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
-
 dir, file = os.path.split(__file__)
+save = False
 
 '''values'''
 mass = 1   # setting mass to be 1
@@ -24,8 +22,6 @@ epsilon = 1   # change in delta_xs size from spatial lattice spacing
 
 N_cor = 20       # number of paths to be skipped path set (due to correlation)
 Therm = 5 * N_cor    # number of sweeps through path set
-
-save = False
 
 '''determinants/shorthands'''
 t_points = np.arange(t_i, t_f + step, step)  # number of temporal points
@@ -102,14 +98,21 @@ def path_gen(xs, x0):
     return path
 
 
-"""Initialising paths and trialing metropolis"""
+"Initialising paths and trialing metropolis"
 
 p_1 = [0 for X in range(nt)]
 p1, count = Metropolis(p_1, pot)
 print(p1, count/nt)
 
 
-"""Metropolis Paths"""
+
+"""Plotting"""
+
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
+
+
+"Metropolis Paths"
 
 init = p_1
 
@@ -133,8 +136,7 @@ if save == True:
 plt.show()
 
 
-
-"""Brute force paths"""
+"Brute force paths"
 
 samples = 5
 

@@ -5,8 +5,8 @@ import random as rdm
 import matplotlib.pyplot as plt
 import os
 
-
 dir, file = os.path.split(__file__)
+save = False
 
 
 '''values'''
@@ -226,5 +226,6 @@ fig.tight_layout()  # otherwise the right y-label is slightly clipped
 #        within a Higgs type potential'
 #        )
 #plt.figtext(0.5, 0.2, txt, wrap=True, horizontalalignment='center', fontsize=12)
-#fig.savefig(dir + '\\Images\\Hist-Higgs.png')
+if save == True:
+    fig.savefig(dir + '\\Images\\Hist-Higgs.png')
 plt.show()

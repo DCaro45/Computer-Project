@@ -4,12 +4,13 @@ import numpy as np
 import random as rdm
 import matplotlib.pyplot as plt
 import os
+
+from Demos.win32cred_demo import save
 from matplotlib import cm
 
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
-
 dir, file = os.path.split(__file__)
+plot = False
+save = False
 
 '''values'''
 mass = 1   # setting mass to be 1
@@ -27,9 +28,6 @@ N_CF = 10 ** 6     # number of updates
 
 u = 2            # potential parameter 1
 l = 1            # potential parameter 2
-
-plot = False
-save = True
 
 '''determinants/shorthands'''
 t_points = np.arange(t_i, t_f + step, step)  # number of temporal points
@@ -266,6 +264,10 @@ Z = Z * (np.max(hist)/np.max(Z))
 
 
 "Plotting 3D Histogram"
+
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
+
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
 x, y = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
@@ -293,7 +295,7 @@ ax.set_zlabel('|' + chr(968) + '|' + chr(178))
 #ax.zaxis.set_major_formatter('{x:.02f}')
 ax.tick_params(axis='z', labelcolor='red')
 if save == True:
-    fig.savefig(dir + '\\Images\\3Dhist_' + name + '-' + str(t_f) + 's.png')
+    fig.savefig(dir + '\\Images\\3Dhist-' + name + '-' + str(t_f) + 's.png')
 plt.show()
 ind = np.argpartition(hist, -4)[-4:]
 print(ind)
@@ -335,5 +337,5 @@ if pot == pot1:
     plt.contour(xs, ys, dat1, 1, cmap='binary')
     plt.show()
 if save == True:
-    fig.savefig(dir + '\\Images\\contour-hist_' + name + '-' + str(t_f) + 's.png')
+    fig.savefig(dir + '\\Images\\contour_hist-' + name + '-' + str(t_f) + 's.png')
 plt.show()

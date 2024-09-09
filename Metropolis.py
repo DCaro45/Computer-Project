@@ -6,10 +6,9 @@ import matplotlib.pyplot as plt
 import os
 
 from scipy.stats import norm
-plt.rcParams["font.family"]="serif"
-plt.rcParams["mathtext.fontset"]="dejavuserif"
 
 dir, file = os.path.split(__file__)
+save = False
 
 
 '''values'''
@@ -168,6 +167,9 @@ gauss = norm.pdf(x_hist, mean, std)
 lim1, lim2 = -3, 3
 
 
+plt.rcParams["font.family"]="serif"
+plt.rcParams["mathtext.fontset"]="dejavuserif"
+
 fig = plt.figure(figsize=[12,6])
 
 ax1 = fig.add_axes((0.07, 0.295, 0.87, 0.65))
@@ -211,6 +213,7 @@ ax3.set_ylabel('\n Residuals')
 
 
 fig.tight_layout()
-fig.savefig(dir + '\\Images\\Hist-Harmonic.png')
+if save == True:
+    fig.savefig(dir + '\\Images\\Hist-Harmonic.png')
 plt.show()
 
