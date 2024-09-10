@@ -1,4 +1,5 @@
 """operating at each point on path, keep each path iteration, start at the origin"""
+#trial
 
 import numpy as np
 import random as rdm
