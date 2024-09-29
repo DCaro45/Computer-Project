@@ -1,7 +1,4 @@
 """operating at each point on path, keep each path iteration, start at the origin"""
-#trial
-#trials 2
-
 import numpy as np
 import random as rdm
 import matplotlib.pyplot as plt
