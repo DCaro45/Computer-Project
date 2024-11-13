@@ -127,7 +127,6 @@ for j in range(N_CF):
         new_p, counts = Metropolis(start_p, pot)
         start_p = new_p
         t_counts += counts
-
     # adding final path to all_ps
     all_ps.append(start_p)
 
