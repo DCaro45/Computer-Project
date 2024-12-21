@@ -46,14 +46,6 @@ t = t_points  # shorthand for temporal lattice points
 e = exp
 
 """Defining functions"""
-def path_gen(x_0):
-    """path generator"""
-    path = np.zeros([nt])
-    path[0] = path[nt-1] = x_0
-    for i in range(1, nt-1):
-        path[i] = rdm.choice(x)
-    return path
-
 def pot1(x):
     """simple harmonic oscillator potential"""
     potential = 1/2 * x**2
@@ -67,9 +59,9 @@ def pot2(x):
     return potential
 
 def pot3(x):
-        """ a polynomial potential with a minimum and a stationary inflection point"""
-        V = 1 / 2 * x ** 2 + 1 / 4 * x ** 4 - 1 / 20 * x ** 5
-        return V
+    """ a polynomial potential with a minimum and a stationary inflection point"""
+    V = 1 / 2 * x ** 2 + 1 / 4 * x ** 4 - 1 / 20 * x ** 5
+    return V
 
 def pot4(x):
     V = - x ** 2
@@ -91,6 +83,13 @@ def pot6(x):
 
 pot = pot5
 
+def path_gen(x_0):
+    """path generator"""
+    path = np.zeros([nt])
+    path[0] = path[nt-1] = x_0
+    for i in range(1, nt-1):
+        path[i] = rdm.choice(x)
+    return path
 
 def actn(path, potential):
     """calculating energies"""
@@ -105,13 +104,11 @@ def actn(path, potential):
 
 def wght(action):
     """calculating weight"""
-
     weight = np.exp(-action)
     return weight
 
 def prop(potential, samples):
     """calculating propagator"""
-
     propagator = np.zeros([nx])
     run = samples//nx
     rem = samples%nx
@@ -134,7 +131,6 @@ def prop(potential, samples):
 
 def pdf(xs):
     """prob density function"""
-
     prob = (np.exp(-(xs ** 2 / 2)) / np.pi ** (1 / 4)) ** 2
     return prob
 
